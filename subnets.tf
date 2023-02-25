@@ -43,5 +43,5 @@ resource "aws_subnet" "default_private_subnet" {
 resource "aws_route_table_association" "default_private_assoc" {
   count          = length(var.aws_azs)
   subnet_id      = element(aws_subnet.default_private_subnet.*.id, count.index)
-  route_table_id = element(aws_route_table.default_private.*.id, count.index)
+  route_table_id = aws_route_table.default_private.id
 }

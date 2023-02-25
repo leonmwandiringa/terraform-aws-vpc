@@ -18,7 +18,6 @@ resource "aws_route" "public_internet_gateway" {
 
 ///private rt
 resource "aws_route_table" "default_private" {
-  count  = length(var.aws_azs)
   vpc_id = aws_vpc.default.id
   tags = merge(
     var.tags,
@@ -31,7 +30,7 @@ resource "aws_route_table" "default_private" {
 #nats etc
 resource "aws_route" "nat_gateway" {
   count                  = var.nats_enabled && length(var.aws_azs) > 0 ? length(var.aws_azs) : 0
-  route_table_id         = element(aws_route_table.default_private.*.id, count.index)
+  route_table_id         = aws_route_table.default_private.id
   nat_gateway_id         = element(aws_nat_gateway.default.*.id, count.index)
   destination_cidr_block = "0.0.0.0/0"
   depends_on = [
