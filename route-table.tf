@@ -30,7 +30,7 @@ resource "aws_route_table" "default_private" {
 
 #nats etc
 resource "aws_route" "nat_gateway" {
-  count                  = var.nats_enabled && length(var.aws_azs) > 0 ? var.az_count : 0
+  count                  = var.nats_enabled && length(var.aws_azs) > 0 ? length(var.aws_azs) : 0
   route_table_id         = element(aws_route_table.default_private.*.id, count.index)
   nat_gateway_id         = element(aws_nat_gateway.default.*.id, count.index)
   destination_cidr_block = "0.0.0.0/0"
