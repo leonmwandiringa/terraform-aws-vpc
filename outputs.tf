@@ -6,10 +6,6 @@ output "aws_internet_gateway" {
   value = aws_internet_gateway.default.id
 }
 
-output "aws_security_group" {
-  value = aws_security_group.default.id
-}
-
 output "aws_public_subnet" {
   value = aws_subnet.default_public_subnet[0].id
 }
