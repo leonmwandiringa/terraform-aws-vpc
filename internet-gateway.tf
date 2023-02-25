@@ -1,9 +1,9 @@
 resource "aws_internet_gateway" "default" {
   vpc_id = aws_vpc.default.id
   tags = merge(
-    var.global_tags,
+    var.tags,
     {
-      "Name" = "${var.global_tags.name} Internet Gateway"
+      "Name" = "${var.tags.Name} Internet Gateway"
     },
   )
   depends_on = [

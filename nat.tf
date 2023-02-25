@@ -3,9 +3,9 @@ resource "aws_nat_gateway" "default" {
   subnet_id     = element(aws_subnet.default_public_subnet.*.id, count.index)
   allocation_id = element(aws_eip.nat.*.id, count.index)
   tags          = merge(
-    var.global_tags,
+    var.tags,
     {
-      Name = "${var.global_tags.name}_Nat_${count.index}"
+      Name = "${var.tags.Name}_Nat_${count.index}"
     }
   )
   depends_on = [

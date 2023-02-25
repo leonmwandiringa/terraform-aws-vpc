@@ -9,7 +9,7 @@ variable "vpc_instance_tenancy" {
   default = "default"
 }
 
-variable "global_tags" {
+variable "tags" {
   type = object({
     Name = string
     Author      = string
@@ -41,32 +41,6 @@ variable "vpc_enable_classiclink" {
 variable "vpc_cidr_block"{
   type = bool
   description = "vpc cidr block range"
-}
-
-variable "default_sg_rules_ingress" {
-  type= list(object({
-    from_port   = number
-    to_port     = number
-    protocol    = string
-    cidr_blocks = list(string)
-  }))
-  default = []  
-}
-
-variable "default_sg_rules_egress" {
-  type= list(object({
-    from_port   = number
-    to_port     = number
-    protocol    = string
-    cidr_blocks = list(string)
-  }))
-  default = []  
-}
-
-variable "sg_description" {
-  type = string
-  description = "sg meta desription"
-  default = "Allow HTTP, HTTPS and SSH traffic"
 }
 
 variable "public_subnet_cidrs" {

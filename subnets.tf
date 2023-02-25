@@ -6,9 +6,9 @@ resource "aws_subnet" "default_public_subnet" {
   availability_zone = trimspace(var.aws_azs[count.index])
   map_public_ip_on_launch = true
   tags = merge(
-    var.global_tags,
+    var.tags,
     {
-      "Name" = "${var.global_tags.name}_public_subnet_az${count.index + 1}"
+      "Name" = "${var.tags.Name}_public_subnet_az${count.index + 1}"
     },
   )
   depends_on = [
@@ -30,9 +30,9 @@ resource "aws_subnet" "default_private_subnet" {
   cidr_block        = var.private_subnet_cidrs[count.index]
   availability_zone = trimspace(var.aws_azs[count.index])
   tags = merge(
-    var.global_tags,
+    var.tags,
     {
-      "Name" = "${var.global_tags.name}_private_subnet_az${count.index + 1}"
+      "Name" = "${var.tags.Name}_private_subnet_az${count.index + 1}"
     },
   )
   depends_on = [

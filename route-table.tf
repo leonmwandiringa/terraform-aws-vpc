@@ -3,9 +3,9 @@
 resource "aws_route_table" "default_public" {
   vpc_id = aws_vpc.default.id
   tags = merge(
-    var.global_tags,
+    var.tags,
     {
-      "Name" = "${var.global_tags.name}_public"
+      "Name" = "${var.tags.Name}_public"
     },
   )
 }
@@ -21,9 +21,9 @@ resource "aws_route_table" "default_private" {
   count  = length(var.aws_azs)
   vpc_id = aws_vpc.default.id
   tags = merge(
-    var.global_tags,
+    var.tags,
     {
-      "Name" = "${var.global_tags.name}_private_az${count.index + 1}"
+      "Name" = "${var.tags.Name}_private_az${count.index + 1}"
     },
   )
 }
