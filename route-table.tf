@@ -22,7 +22,7 @@ resource "aws_route_table" "default_private" {
   tags = merge(
     var.tags,
     {
-      "Name" = "${var.tags.Name}_private_az${count.index + 1}"
+      "Name" = "${var.tags.Name}_private"
     },
   )
 }
