@@ -39,7 +39,7 @@ variable "vpc_enable_classiclink" {
 }
 
 variable "vpc_cidr_block"{
-  type = bool
+  type = string
   description = "vpc cidr block range"
 }
 
