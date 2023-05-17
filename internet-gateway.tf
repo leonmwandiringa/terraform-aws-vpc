@@ -1,12 +1,5 @@
-resource "aws_internet_gateway" "default" {
-  vpc_id = aws_vpc.default.id
-  tags = merge(
-    var.tags,
-    {
-      "Name" = "${var.tags.Name} Internet Gateway"
-    },
-  )
-  depends_on = [
-    aws_vpc.default,
-  ]
+resource "aws_eip" "nat" {
+  count = var.nats_enabled && length(var.aws_azs) > 0 ? length(var.aws_azs) : 0
+  tags  = var.tags
+  vpc   = true
 }

@@ -58,4 +58,3 @@ variable "nats_enabled" {
   type = bool
   description = "nats enabled"
 }
-

@@ -32,3 +32,11 @@ output "aws_nat_gateway_ids" {
 output "aws_eip_nat_ips" {
   value = var.nats_enabled == true ? aws_eip.nat.*.public_ip : []
 }
+
+output "aws_private_route_table_id" {
+  value = aws_route_table.default_private.id
+}
+
+output "aws_public_route_table" {
+  value = aws_route_table.default_public.id
+}
