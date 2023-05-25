@@ -32,12 +32,6 @@ variable "vpc_enable_dns_hostnames" {
   description = "dns names creation"
 }
 
-variable "vpc_enable_classiclink" {
-  type = bool
-  default = false
-  description = "enable classic links"
-}
-
 variable "vpc_cidr_block"{
   type = string
   description = "vpc cidr block range"
